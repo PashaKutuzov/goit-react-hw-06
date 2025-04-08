@@ -1,22 +1,21 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { addContacts } from "../redux/contactsSlice";
+import { addContact } from "../redux/contactsSlice";
 import * as Yup from "yup";
 import css from "./ContactsStyle/ContactForm.module.css";
 import { useDispatch } from "react-redux";
 
 export default function ContactForm() {
-
-const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
 
   const handleSummit = (values, actions) => {
     console.log("submit", values);
-    dispatch(addContacts({
-      id: Date.now(),
-      name: values.username,
-      number: values.telephone,
-    }));
+    dispatch(
+      addContact({
+        id: Date.now(),
+        name: values.username,
+        number: values.telephone,
+      })
+    );
     actions.resetForm();
   };
 
